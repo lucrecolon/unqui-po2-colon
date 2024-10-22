@@ -14,6 +14,9 @@ class PokerStatusTest {
 	public String asTreboles;
 	public String sietePicas;
 	public String reinaCorazones;
+	public String diezCorazones;
+	public String dosCorazones;
+	public String seisCorazones;
 	public PokerStatus pokerStatus;
 	
 	@BeforeEach
@@ -26,13 +29,17 @@ class PokerStatusTest {
 		asTreboles = "AT";
 		sietePicas = "7P";
 		reinaCorazones = "QC";
+		diezCorazones = "10C";
+		dosCorazones = "2C";
+		seisCorazones = "6C";
 	}
 
 	@Test
 	void testVerificar() {
-		assertTrue(pokerStatus.verificar(asPicas, asDiamantes, asCorazones, asTreboles, sietePicas));
-
-		assertFalse(pokerStatus.verificar(asPicas, reinaCorazones, asCorazones, asTreboles, sietePicas));
+		assertEquals("Poker", pokerStatus.verificar(asPicas, asDiamantes, asCorazones, asTreboles, sietePicas));
+		assertEquals("Trio", pokerStatus.verificar(asPicas, reinaCorazones, asCorazones, asTreboles, sietePicas));
+		assertEquals("Color", pokerStatus.verificar(reinaCorazones, dosCorazones, asCorazones, seisCorazones, diezCorazones));
+		assertEquals("Nada", pokerStatus.verificar(asPicas, reinaCorazones, dosCorazones, asTreboles, sietePicas));
 	}
 }
 
