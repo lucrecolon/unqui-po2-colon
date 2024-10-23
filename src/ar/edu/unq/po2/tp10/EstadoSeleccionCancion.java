@@ -5,6 +5,7 @@ public class EstadoSeleccionCancion implements EstadoMP3 {
 	@Override
 	public void play(ReproductorMP3 reproductor) {
 		reproductor.setEstado(new EstadoReproduccion());
+		reproductor.getCancionSeleccionada().play();
 	}
 
 	@Override

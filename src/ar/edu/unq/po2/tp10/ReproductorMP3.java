@@ -5,8 +5,8 @@ public class ReproductorMP3 {
 	private EstadoMP3 estado;
 	private Song cancionSeleccionada;
 	
-	public ReproductorMP3(EstadoMP3 estado, Song cancionSeleccionada) {
-		this.estado = estado;
+	public ReproductorMP3(Song cancionSeleccionada) {
+		this.estado = new EstadoSeleccionCancion();
 		this.cancionSeleccionada = cancionSeleccionada;
 	}
 
@@ -26,6 +26,18 @@ public class ReproductorMP3 {
 		this.cancionSeleccionada = cancionSeleccionada;
 	}
 
+	public void play() {
+		this.estado.play(this);
+	}
+	
+	public void pause() {
+		this.estado.pause(this);
+	}
+	
+	public void stop() {
+		this.estado.stop(this);
+	}
+	
 	public String errorEstado() {
 		return "ESTADO INCORRECTO";
 	}
