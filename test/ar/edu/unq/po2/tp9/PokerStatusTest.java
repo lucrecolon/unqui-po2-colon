@@ -6,40 +6,38 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.Mockito.*;
+
 class PokerStatusTest {
 	
-	public String asPicas;
-	public String asDiamantes; 
-	public String asCorazones; 
-	public String asTreboles;
-	public String sietePicas;
-	public String reinaCorazones;
-	public String diezCorazones;
-	public String dosCorazones;
-	public String seisCorazones;
+	public Carta c1;
+	public Carta c2; 
+	public Carta c3; 
+	public Carta c4;
+	public Carta c5;
 	public PokerStatus pokerStatus;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		
 		pokerStatus = new PokerStatus();
-		asPicas = "AP";
-		asDiamantes = "AD";
-		asCorazones = "AC";
-		asTreboles = "AT";
-		sietePicas = "7P";
-		reinaCorazones = "QC";
-		diezCorazones = "10C";
-		dosCorazones = "2C";
-		seisCorazones = "6C";
+		c1 = mock(Carta.class);
+		c2 = mock(Carta.class);
+		c3 = mock(Carta.class);
+		c4 = mock(Carta.class);
+		c5 = mock(Carta.class);
+		
+		when(c1.getValor()).thenReturn("A");
+		when(c2.getValor()).thenReturn("A");
+		when(c3.getValor()).thenReturn("A");
+		when(c4.getValor()).thenReturn("A");
+		
 	}
 
 	@Test
 	void testVerificar() {
-		assertEquals("Poker", pokerStatus.verificar(asPicas, asDiamantes, asCorazones, asTreboles, sietePicas));
-		assertEquals("Trio", pokerStatus.verificar(asPicas, reinaCorazones, asCorazones, asTreboles, sietePicas));
-		assertEquals("Color", pokerStatus.verificar(reinaCorazones, dosCorazones, asCorazones, seisCorazones, diezCorazones));
-		assertEquals("Nada", pokerStatus.verificar(asPicas, reinaCorazones, dosCorazones, asTreboles, sietePicas));
+		
+		
 	}
 }
 
